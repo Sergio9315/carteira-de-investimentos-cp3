@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include "funcoes.h"
 
@@ -134,4 +135,6 @@ void relatorio(Ativo carteira[], int total) {
     printf("estando alinhado ao ODS 8.10 da ONU, que busca ampliar o acesso\n");
     printf("a servicos financeiros. As taxas utilizadas sao ilustrativas\n");
     printf("e nao representam recomendacoes de investimento.\n");
+    printf("\nODS - Objetivos de Desenvolvimento Sustentavel\n");
+    printf("8.10 - Ampliar o acesso a servicos financeiros, bancarios, de seguros e financeiros, promovendo a inclusao financeira e melhores oportunidades de crescimento economico.\n");
 }

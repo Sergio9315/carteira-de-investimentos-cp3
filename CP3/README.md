@@ -2,9 +2,11 @@
 Projeto desenvolvido em linguagem C.
 No CP3, o projeto foi ampliado em relação ao CP2, mantendo a proposta original de cadastro e acompanhamento dos ativos e acrescentando recursos de análise, ordenação, simulação e relatório.
 
-## Aceddo ao projto no GitHub
+## Repositório do projeto no GitHub
 
-## Repositório: https://github.com/Sergio9315/carteira-de-investimentos-cp3.git
+Clique no link abaixo para acessar o código-fonte do projeto:
+
+[https://github.com/Sergio9315/carteira-de-investimentos-cp3.git]
 
 ## Apresentação do projeto
 O sistema permite cadastrar e acompanhar uma carteira de investimentos.

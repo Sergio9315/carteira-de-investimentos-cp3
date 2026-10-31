@@ -4,7 +4,7 @@ No CP3, o projeto foi ampliado em relação ao CP2, mantendo a proposta original
 
 ## Aceddo ao projto no GitHub
 
-## Repositório: 
+## Repositório: https://github.com/Sergio9315/carteira-de-investimentos-cp3.git
 
 ## Apresentação do projeto
 O sistema permite cadastrar e acompanhar uma carteira de investimentos.

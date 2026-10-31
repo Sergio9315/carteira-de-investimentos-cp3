@@ -58,11 +58,15 @@ CP3/
 
 ## Como compilar e executar o projeto
 
+**Atenção:** abra esta pasta do projeto no VS Code. No terminal, confirme que `ls` mostra as pastas `src`, `include` e `data`. Não entre em outra pasta `CP3` antes de compilar.
+
 1. Windows (MSYS2 UCRT64)
 
-## Abra o terminal MSYS2 UCRT64 na pasta principal CP3 e execute o comando:
+## Abra o terminal MSYS2 UCRT64 na pasta principal do projeto (a pasta que contém `src`, `include` e `data`) e execute:
 
--**gcc -Wall -Wextra -std=c11 -Iinclude src/main.c src/funcoes.c src/modulo.c -o programa.exe**
+```bash
+gcc -Wall -Wextra -std=c11 -Iinclude src/main.c src/funcoes.c src/modulo.c -o programa.exe
+```
 
 ## Para executar o programa 
 

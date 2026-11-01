@@ -4,9 +4,11 @@ No CP3, o projeto foi ampliado em relação ao CP2, mantendo a proposta original
 
 ## Repositório do projeto no GitHub
 
+
 Clique no link abaixo para acessar o código-fonte do projeto:
 
 [https://github.com/Sergio9315/carteira-de-investimentos-cp3.git]
+
 
 ## Apresentação do projeto
 O sistema permite cadastrar e acompanhar uma carteira de investimentos.
@@ -68,19 +70,20 @@ CP3/
 gcc -Wall -Wextra -std=c11 -Iinclude src/main.c src/funcoes.c src/modulo.c -o programa.exe
 ```
 
-## Para executar o programa 
+## Para executar o programa
 
+```bash
 ./programa.exe
+```
 
 2. Linux
 
 Abra o terminal na pasta principal CP3 e execute o comando:
 
+```bash
 gcc -Wall -Wextra -std=c11 -Iinclude src/main.c src/funcoes.c src/modulo.c -o programa
-
-Para executar o programa:
-
 ./programa
+```
 
 ## Formato do arquivo de dados
 
@@ -140,6 +143,14 @@ O simulador utiliza o valor atual total da carteira como valor inicial e compara
 O cálculo é repetido mês a mês, demonstrando o conceito de juros compostos.
 
 As taxas são fixas e exclusivamente didáticas. Não representam taxas atuais de mercado, previsão de rendimento ou recomendação de investimento.
+
+## Restrição de conteúdo — Aula 11
+
+O código-fonte foi ajustado para não declarar nem utilizar ponteiros explicitamente na lógica do programa. Também foram retirados os operadores de endereço `&` das leituras de dados e as declarações de ponteiros utilizadas para retornar textos.
+
+A única declaração de ponteiro mantida é `FILE *arquivo`, necessária para a manipulação de arquivos em C com `fopen`, `fgets`, `fprintf` e `fclose`. O projeto continua utilizando vetores como parâmetros de funções, conforme permitido pela orientação informada.
+
+As entradas do teclado são lidas com `fgets`; os valores numéricos são convertidos com `atof` e `atoi`. A leitura do arquivo é feita linha por linha, sem utilizar `fscanf` com operador de endereço.
 
 ## Observação
 

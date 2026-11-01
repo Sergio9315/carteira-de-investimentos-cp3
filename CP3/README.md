@@ -144,13 +144,35 @@ O cálculo é repetido mês a mês, demonstrando o conceito de juros compostos.
 
 As taxas são fixas e exclusivamente didáticas. Não representam taxas atuais de mercado, previsão de rendimento ou recomendação de investimento.
 
-## Restrição de conteúdo — Aula 11
+## Adequação do código às restrições de ponteiros 
 
-O código-fonte foi ajustado para não declarar nem utilizar ponteiros explicitamente na lógica do programa. Também foram retirados os operadores de endereço `&` das leituras de dados e as declarações de ponteiros utilizadas para retornar textos.
+O código-fonte foi ajustado para não declarar nem utilizar ponteiros explicitamente na lógica do programa. Também foram retirados os operadores de endereço & das leituras de dados e as declarações de ponteiros utilizadas anteriormente para retornar textos.
 
-A única declaração de ponteiro mantida é `FILE *arquivo`, necessária para a manipulação de arquivos em C com `fopen`, `fgets`, `fprintf` e `fclose`. O projeto continua utilizando vetores como parâmetros de funções, conforme permitido pela orientação informada.
+A única declaração explícita de ponteiro mantida é FILE *arquivo, necessária para a manipulação de arquivos em C com as funções de abertura, leitura, gravação e fechamento de arquivos.
 
-As entradas do teclado são lidas com `fgets`; os valores numéricos são convertidos com `atof` e `atoi`. A leitura do arquivo é feita linha por linha, sem utilizar `fscanf` com operador de endereço.
+O projeto continua utilizando vetores como parâmetros de funções, conforme permitido pela orientação da atividade.
+
+## Funções utilizadas para leitura e manipulação dos dados
+
+Função                    Finalidade
+
+fgets()  *  Realiza a leitura de textos e linhas do arquivo.
+
+atof()   * Converte textos em números decimais.
+
+atoi()   * Converte textos em números inteiros.
+
+fopen()  * Abre arquivos para leitura ou gravação.
+
+fprintf() * Grava os dados no arquivo.
+
+fclose()  * Fecha o arquivo após sua utilização.
+
+strcspn() * Auxilia na remoção da quebra de linha dos textos.
+
+As entradas do teclado são realizadas com fgets(), enquanto os valores numéricos são convertidos utilizando atof() e atoi().
+
+A leitura dos dados armazenados é feita linha por linha, sem utilizar fscanf() com o operador de endereço &.
 
 ## Observação
 

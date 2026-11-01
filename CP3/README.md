@@ -10,6 +10,11 @@ Clique no link abaixo para acessar o código-fonte do projeto:
 [https://github.com/Sergio9315/carteira-de-investimentos-cp3.git]
 
 
+## Link do video publicado como não registrado
+
+[https://youtu.be/3M6YCK0Nrdc]
+
+
 ## Apresentação do projeto
 O sistema permite cadastrar e acompanhar uma carteira de investimentos.
 Os dados são armazenados no arquivo data/carteira.txt e carregados quando o programa é iniciado.

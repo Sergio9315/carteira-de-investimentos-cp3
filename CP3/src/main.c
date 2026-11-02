@@ -52,7 +52,7 @@ int main(void) {
                 break;
 
             case 6:
-                simulador(valorTotal(carteira, total));
+                simulador(carteira, total);
                 break;
 
             case 7:

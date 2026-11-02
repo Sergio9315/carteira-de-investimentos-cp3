@@ -12,7 +12,7 @@ Clique no link abaixo para acessar o código-fonte do projeto:
 
 ## Link do video publicado como não registrado
 
- [https://youtu.be/aaSSb0VooMA]
+[https://youtu.be/aaSSb0VooMA]
 
 
 ## Apresentação do projeto

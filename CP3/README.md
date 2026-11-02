@@ -12,7 +12,7 @@ Clique no link abaixo para acessar o código-fonte do projeto:
 
 ## Link do video publicado como não registrado
 
-[https://youtu.be/3M6YCK0Nrdc]
+ [https://youtu.be/aaSSb0VooMA]
 
 
 ## Apresentação do projeto
@@ -41,9 +41,9 @@ Jhonatan Henrique da Cruz Carneiro — RGM: 37734075
 
 4. Calcular a rentabilidade geral em porcentagem.
 
-5. Ordenar os ativos utilizando o algoritmo Bubble Sort, da maior para a menor rentabilidade, exibindo a lista ordenada.
+5. Ordenar os ativos utilizando o algoritmo Bubble Sort, da maior para a menor rentabilidade.
 
-6. Simular, de forma educativa, o rendimento de três alternativas durante 12 meses.
+6. Simular, de forma educativa, a evolução dos valores dos ativos durante 12 meses, utilizando taxas hipotéticas calculadas a partir da rentabilidade individual.
 
 7. Emitir relatório final com os resultados da carteira.
 
@@ -65,11 +65,11 @@ CP3/
 
 ## Como compilar e executar o projeto
 
-**Atenção:** abra esta pasta do projeto no VS Code. No terminal, confirme que `ls` mostra as pastas `src`, `include` e `data`. Não entre em outra pasta `CP3` antes de compilar.
+**Atenção:** abra a pasta principal do projeto no VS Code. No terminal, confirme que aparecem as pastas src, include e data.
 
 1. Windows (MSYS2 UCRT64)
 
-## Abra o terminal MSYS2 UCRT64 na pasta principal do projeto (a pasta que contém `src`, `include` e `data`) e execute:
+## Abra o terminal MSYS2 UCRT64 na pasta principal do projeto e execute:
 
 ```bash
 gcc -Wall -Wextra -std=c11 -Iinclude src/main.c src/funcoes.c src/modulo.c -o programa.exe
@@ -96,11 +96,11 @@ gcc -Wall -Wextra -std=c11 -Iinclude src/main.c src/funcoes.c src/modulo.c -o pr
 
 * nome;categoria;quantidade;precoCompra;precoAtual;
 
-- Os campos são separados por ponto e vírgula (;) para facilitar a organização, a identificação e a leitura das informações armazenadas nos arquivos do programa, permitindo que cada dado seja interpretado corretamente. 
+- Os campos são separados por ponto e vírgula (;) para facilitar a organização, a identificação e a leitura das informações armazenadas.
 
-- Os números decimais são gravados utilizando ponto (.) como separador decimal, seguindo o padrão da linguagem C. Isso garante que o programa consiga armazenar e interpretar corretamente valores financeiros durante a leitura e gravação dos arquivos.
+- Os números decimais são gravados utilizando ponto (.) como separador decimal, seguindo o padrão utilizado pelo programa.
 
-- Não utilize ponto e vírgula (;) no nome ou na categoria dos ativos, pois esse caractere é utilizado como separador das informações no arquivo de armazenamento. Seu uso nesses campos pode causar erros na leitura e interpretação dos dados pelo programa.
+- Não utilize ponto e vírgula (;) no nome ou na categoria dos ativos, pois esse caractere é utilizado como separador das informações. Seu uso nesses campos pode causar erros na leitura dos dados.
 
 ## Fórmulas utilizadas
 
@@ -116,7 +116,7 @@ gcc -Wall -Wextra -std=c11 -Iinclude src/main.c src/funcoes.c src/modulo.c -o pr
 
 ### Conteúdos de programação utilizados
 
--*Struct (estrutura):* permite agrupar diferentes informações relacionadas em um único tipo de dado. No projeto, é utilizada para organizar os dados de cada investimento, como nome, categoria, quantidade, preço de compra e preço atual.
+-*struct (estrutura):* permite agrupar diferentes informações relacionadas em um único tipo de dado. No projeto, é utilizada para organizar os dados de cada investimento, como nome, categoria, quantidade, preço de compra e preço atual.
 
 -*Vetores:* permitem armazenar vários elementos do mesmo tipo em uma única variável. No projeto, são utilizados para armazenar os diferentes investimentos cadastrados na carteira.
 
@@ -137,23 +137,21 @@ gcc -Wall -Wextra -std=c11 -Iinclude src/main.c src/funcoes.c src/modulo.c -o pr
 - *Bubble Sort:* é um algoritmo de ordenação que compara elementos vizinhos e troca suas posições quando necessário. No projeto, é utilizado para ordenar os investimentos conforme sua rentabilidade.
 
 ## Simulador educativo
-O simulador utiliza o valor atual total da carteira como valor inicial e compara três taxas mensais hipotéticas durante 12 meses:
+O simulador apresenta uma projeção hipotética dos ativos cadastrados durante 12 meses.
 
-- Poupança: 0,50% ao mês.
+Para cada ativo, utiliza o valor atual como valor inicial e considera a rentabilidade individual dividida por 12 como taxa mensal hipotética. O cálculo é repetido mês a mês, demonstrando o conceito de juros compostos.
 
-- Tesouro Selic: 0,80% ao mês.
+Os resultados são apresentados individualmente, mostrando o valor final projetado e a diferença em relação ao valor inicial.
 
-- CDB: 0,90% ao mês.
-
-O cálculo é repetido mês a mês, demonstrando o conceito de juros compostos.
-
-As taxas são fixas e exclusivamente didáticas. Não representam taxas atuais de mercado, previsão de rendimento ou recomendação de investimento.
+As taxas são hipotéticas e possuem finalidade exclusivamente didática. Não representam taxas atuais de mercado, previsão de rendimento ou recomendação de investimento.
 
 ## Adequação do código às restrições de ponteiros 
 
-O código-fonte foi ajustado para não declarar nem utilizar ponteiros explicitamente na lógica do programa. Também foram retirados os operadores de endereço & das leituras de dados e as declarações de ponteiros utilizadas anteriormente para retornar textos.
+O código-fonte foi ajustado para evitar declarações explícitas de ponteiros na lógica principal do programa e o uso do operador de endereço & nas leituras de dados.
 
-A única declaração explícita de ponteiro mantida é FILE *arquivo, necessária para a manipulação de arquivos em C com as funções de abertura, leitura, gravação e fechamento de arquivos.
+As entradas são realizadas utilizando fgets(), e os valores numéricos são convertidos com atof() e atoi().
+
+A única declaração explícita de ponteiro mantida no código é FILE *arquivo, necessária para a manipulação de arquivos em C, por meio das funções de abertura, leitura, gravação e fechamento.
 
 O projeto continua utilizando vetores como parâmetros de funções, conforme permitido pela orientação da atividade.
 
@@ -161,7 +159,7 @@ O projeto continua utilizando vetores como parâmetros de funções, conforme pe
 
 Função                    Finalidade
 
-fgets()  *  Realiza a leitura de textos e linhas do arquivo.
+fgets()  *  Realiza a leitura de textos e linhas do arquivo ou teclado.
 
 atof()   * Converte textos em números decimais.
 

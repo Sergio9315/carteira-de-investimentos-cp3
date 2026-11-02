@@ -1,3 +1,4 @@
+
 #ifndef MODULO_H
 #define MODULO_H
 
@@ -15,4 +16,5 @@ int carregarCarteira(Ativo carteira[]);
 void salvarCarteira(Ativo carteira[], int total);
 
 #endif
+
 

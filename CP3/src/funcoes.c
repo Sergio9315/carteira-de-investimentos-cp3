@@ -1,9 +1,10 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "funcoes.h"
 
-/* Le textos sem utilizar scanf e sem operador de endereco. */
+/* Le textos sem utilizar scanf. */
 static void lerTexto(char destino[], int tamanho) {
     if (fgets(destino, tamanho, stdin) != NULL) {
         destino[strcspn(destino, "\n")] = '\0';
@@ -44,6 +45,7 @@ int cadastrarAtivo(Ativo carteira[], int total) {
     carteira[total].precoAtual = lerNumero();
 
     printf("\nAtivo cadastrado com sucesso!\n");
+
     return total + 1;
 }
 
@@ -88,6 +90,7 @@ void listarAtivos(Ativo carteira[], int total) {
         printf("Preco de compra: R$ %.2f\n", carteira[i].precoCompra);
         printf("Preco atual: R$ %.2f\n", carteira[i].precoAtual);
         printf("Rentabilidade: %.2f%%\n", rentabilidade(carteira[i]));
+
         printf("Classificacao: ");
         classificarRisco(rentabilidade(carteira[i]));
         printf("\n");
@@ -124,14 +127,16 @@ double rentabilidadeGeral(Ativo carteira[], int total) {
     return ((atual - investido) / investido) * 100;
 }
 
-/* Ordena os ativos usando Bubble Sort, da maior para a menor rentabilidade. */
+/* Ordena os ativos usando Bubble Sort. */
 void ordenarCarteira(Ativo carteira[], int total) {
     int i, j;
     Ativo aux;
 
     for (i = 0; i < total - 1; i++) {
         for (j = 0; j < total - 1 - i; j++) {
-            if (rentabilidade(carteira[j]) < rentabilidade(carteira[j + 1])) {
+            if (rentabilidade(carteira[j]) <
+                rentabilidade(carteira[j + 1])) {
+
                 aux = carteira[j];
                 carteira[j] = carteira[j + 1];
                 carteira[j + 1] = aux;
@@ -164,13 +169,15 @@ void exibirRentabilidade(Ativo carteira[], int total) {
         printf("\n%d. %s\n", i + 1, carteira[i].nome);
         printf("Categoria: %s\n", carteira[i].categoria);
         printf("Rentabilidade: %.2f%%\n", rentabilidade(carteira[i]));
+
         investido += carteira[i].quantidade * carteira[i].precoCompra;
     }
 
     resultado = atual - investido;
 
     printf("\nValor total da carteira: R$ %.2f\n", atual);
-    printf("Rentabilidade geral: %.2f%%\n", rentabilidadeGeral(carteira, total));
+    printf("Rentabilidade geral: %.2f%%\n",
+           rentabilidadeGeral(carteira, total));
 
     if (resultado >= 0) {
         printf("Lucro total: R$ %.2f\n", resultado);
@@ -179,29 +186,47 @@ void exibirRentabilidade(Ativo carteira[], int total) {
     }
 }
 
-/* Simulador educativo de investimentos para 12 meses. */
-void simulador(double valor) {
-    int i;
-    double poupanca = valor;
-    double selic = valor;
-    double cdb = valor;
+/* Simulador educativo dos ativos da carteira para 12 meses. */
+void simulador(Ativo carteira[], int total) {
+    int i, j;
+    double valorInicial, valorFinal, taxa, resultado;
 
-    for (i = 1; i <= 12; i++) {
-        poupanca *= 1.005;
-        selic *= 1.008;
-        cdb *= 1.009;
+    if (total == 0) {
+        printf("\nNenhum ativo cadastrado.\n");
+        return;
     }
 
     printf("\n=== SIMULADOR EDUCATIVO ===\n");
-    printf("Simulacao de R$ %.2f durante 12 meses:\n\n", valor);
-    printf("POUPANCA      (0.50%%/mes): R$ %.2f (+R$ %.2f)\n",
-           poupanca, poupanca - valor);
-    printf("TESOURO SELIC (0.80%%/mes): R$ %.2f (+R$ %.2f)\n",
-           selic, selic - valor);
-    printf("CDB           (0.90%%/mes): R$ %.2f (+R$ %.2f)\n",
-           cdb, cdb - valor);
+    printf("Simulacao dos ativos durante 12 meses:\n\n");
 
-    printf("\nAs taxas sao hipoteticas e possuem finalidade exclusivamente didatica.\n");
+    for (i = 0; i < total; i++) {
+
+        valorInicial = carteira[i].quantidade * carteira[i].precoAtual;
+
+        taxa = rentabilidade(carteira[i]) / 100;
+
+        valorFinal = valorInicial;
+
+        for (j = 1; j <= 12; j++) {
+            valorFinal = valorFinal * (1 + taxa / 12);
+        }
+
+        resultado = valorFinal - valorInicial;
+
+        printf("%s (%s) (%.2f%%/mes): R$ %.2f (",
+               carteira[i].nome,
+               carteira[i].categoria,
+               (taxa / 12) * 100,
+               valorFinal);
+
+        if (resultado >= 0) {
+            printf("+R$ %.2f)\n", resultado);
+        } else {
+            printf("-R$ %.2f)\n", -resultado);
+        }
+    }
+
+    printf("\nSimulacao hipotetica para fins educativos.\n");
 }
 
 /* Gera o relatorio final da carteira. */
@@ -224,11 +249,15 @@ void relatorio(Ativo carteira[], int total) {
 
     resultado = atual - investido;
 
-    printf("\n=== RELATORIO FINAL ===\n");
+    printf("\n========================================\n");
+    printf("             RELATORIO FINAL\n");
+    printf("========================================\n");
+
     printf("Quantidade de ativos: %d\n", total);
     printf("Valor investido: R$ %.2f\n", investido);
     printf("Valor atual: R$ %.2f\n", atual);
-    printf("Rentabilidade geral: %.2f%%\n", rentabilidadeGeral(carteira, total));
+    printf("Rentabilidade geral: %.2f%%\n",
+           rentabilidadeGeral(carteira, total));
 
     if (resultado >= 0) {
         printf("Resultado: Lucro de R$ %.2f\n", resultado);
@@ -236,8 +265,34 @@ void relatorio(Ativo carteira[], int total) {
         printf("Resultado: Prejuizo de R$ %.2f\n", -resultado);
     }
 
-    printf("\nODS - Objetivos de Desenvolvimento Sustentavel\n");
-    printf("8.10 - Ampliar o acesso a servicos financeiros,\n");
-    printf("bancarios e de seguros, promovendo a inclusao financeira\n");
-    printf("e melhores oportunidades de crescimento economico.\n");
+    printf("\n========================================\n");
+    printf("       IMPACTOS SOCIAIS DO SIMULADOR\n");
+    printf("========================================\n");
+
+    printf("\nODS - OBJETIVOS DE DESENVOLVIMENTO SUSTENTAVEL\n");
+    printf("ODS 8 - Trabalho Decente e Crescimento Economico\n");
+
+    printf("\nMETA 8.10 - INCLUSAO FINANCEIRA\n");
+    printf("Fortalecer o acesso da populacao aos servicos\n");
+    printf("financeiros, bancarios e de seguros, promovendo\n");
+    printf("a inclusao financeira e melhores oportunidades\n");
+    printf("de crescimento economico.\n");
+
+    printf("\nONU - ORGANIZACAO DAS NACOES UNIDAS\n");
+    printf("A ONU estabeleceu os Objetivos de Desenvolvimento\n");
+    printf("Sustentavel (ODS) como metas globais para promover\n");
+    printf("o desenvolvimento economico, social e ambiental.\n");
+
+    printf("\nIMPACTOS SOCIAIS DO PROJETO\n");
+    printf("O simulador contribui para a inclusao financeira\n");
+    printf("ao oferecer uma ferramenta simples e educativa\n");
+    printf("para conhecer diferentes possibilidades de investimento.\n");
+    printf("Por meio de simulacoes de rentabilidade e comparacao\n");
+    printf("entre ativos, permite compreender melhor o funcionamento\n");
+    printf("dos investimentos, incentiva a educacao financeira\n");
+    printf("e auxilia na tomada de decisoes mais conscientes,\n");
+    printf("contribuindo para ampliar o acesso a informacao e\n");
+    printf("ao conhecimento financeiro.\n");
+
+    printf("\n========================================\n");
 }

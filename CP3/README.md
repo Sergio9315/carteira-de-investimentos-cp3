@@ -12,12 +12,17 @@ Clique no link abaixo para acessar o código-fonte do projeto:
 
 ## Link do video publicado como não registrado
 
-[https://youtu.be/aaSSb0VooMA]
+ [https://youtu.be/aaSSb0VooMA]
 
 
 ## Apresentação do projeto
 O sistema permite cadastrar e acompanhar uma carteira de investimentos.
 Os dados são armazenados no arquivo data/carteira.txt e carregados quando o programa é iniciado.
+
+## Público-alvo
+O sistema é destinado a estudantes, iniciantes em programação e pessoas interessadas em aprender conceitos básicos de organização e acompanhamento de investimentos.
+
+Possui finalidade acadêmica e educativa, permitindo praticar o cadastro de ativos, cálculos financeiros, análise de rentabilidade e organização de dados.
 
 ## Integrantes do grupo
 
@@ -49,6 +54,15 @@ Jhonatan Henrique da Cruz Carneiro — RGM: 37734075
 
 8. Salvar os dados e sair do programa.
 
+## TEcnologias utilizadas no desenvolvimento
+. Linguagem de programação: C.
+. Compilador: GCC (MSYS2 UCRT64 no Windows).
+. Ambiente de desenvolvimento: Visual Studio Code (VS Code).
+. Bibliotecas padrão: stdio.h, stdlib.h e string.h.
+. Armazenamento de dados: arquivos de texto (.txt).
+. Controle de versão: Git e GitHub.
+. Algoritmo de ordenação: Bubble Sort.
+
 ## Estrutura do projeto
 
 CP3/
@@ -62,6 +76,14 @@ CP3/
 ├── data/
 │   └── carteira.txt
 └── README.md
+
+## Requisitos mínimos para execução
+. Computador com sistema operacional Windows ou Linux.
+. Compilador GCC instalado e configurado.
+. Visual Studio Code (opcional, recomendado para visualizar e editar o código).
+. Terminal para executar os comandos de compilação.
+. Pasta do projeto contendo os diretórios src, include e data.
+. Arquivo data/carteira.txt para armazenamento dos investimentos.
 
 ## Como compilar e executar o projeto
 
